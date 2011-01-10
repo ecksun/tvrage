@@ -72,8 +72,8 @@ Next Episode:       $(get_tag 'Next Episode')"
 }
 
 
-# In case we dont want to search and the user hasnt defined to get all results (-n -1)
-if [ ! $do_search ] && [ ! $search_hits -eq -1 ]; then
+# In case we dont want to search
+if [ ! $do_search ]; then
     # Otherwise search all preconfigured shows and display them
     if [ -z "${shows[$show]}" ]; then
         regex=`sed 's/ /./g' <<< $show`
@@ -97,9 +97,9 @@ if [ ! $do_search ] && [ ! $search_hits -eq -1 ]; then
     fi
 fi
 
-# Search tvrage if either -s is specified or the user has specified more search
-# results (either > 0 or all, -1)
-if [ $do_search ] || [ $search_hits -gt 0 ] || [ $search_hits -eq -1 ]; then
+# Search tvrage if either -s is specified or the user has specified to
+# automatically get the number of search results (-n 0).
+if [ $do_search ] || [ $search_hits -gt 0 ]; then
     search_result=`GET "http://services.tvrage.com/feeds/search.php?show=$show"`
 
     # Remove the newline and split per show instad
