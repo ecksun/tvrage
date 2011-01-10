@@ -94,6 +94,7 @@ if [ ! $do_search ]; then
     # If we didnt want to search, check if we have preconfigured the show id exactly
     else
         show_info ${shows[$show]}
+        ((search_hits--))
     fi
 fi
 
