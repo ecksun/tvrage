@@ -1,1 +1,1 @@
-* Search through the associative array in show_info and find show on regex
+ * Get latest episodes for each show, use Quickinfo
